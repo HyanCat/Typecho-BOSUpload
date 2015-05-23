@@ -56,6 +56,9 @@ class BOSUpload_Plugin implements Typecho_Plugin_Interface
 
 		$bucketName = new Typecho_Widget_Helper_Form_Element_Text('bucket', null, 'bucketName', _t('Bucket名称'), _t(''));
 		$form->addInput($bucketName);
+
+		$domain = new Typecho_Widget_Helper_Form_Element_Text('domain', null, '', _t('绑定域名'), _t(''));
+		$form->addInput($domain);
 	}
 
 	/**
@@ -254,7 +257,7 @@ class BOSUpload_Plugin implements Typecho_Plugin_Interface
 
 		require_once 'BosService.php';
 
-		return new BosService($options->ak, $options->sk, $options->bucket);
+		return new BosService($options->ak, $options->sk, $options->bucket, $options->domain);
 	}
 
 }

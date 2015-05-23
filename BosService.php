@@ -11,12 +11,10 @@ class BosService
 {
 	private $client;
 	private $bucket;
+	private $domain;
 	private $endpoint = 'http://bj.bcebos.com';
-	private $key;
-	private $filename;
-	private $download;
 
-	public function __construct($accessKey, $secretKey, $bucket)
+	public function __construct($accessKey, $secretKey, $bucket, $domain)
 	{
 		$BOS_CONFIG   = array(
 			'credentials' => array(
@@ -27,6 +25,8 @@ class BosService
 		);
 		$this->client = new BosClient($BOS_CONFIG);
 		$this->bucket = $bucket;
+		$this->domain = $domain;
+
 		$this->checkBucket($this->bucket);
 	}
 
@@ -67,6 +67,6 @@ class BosService
 
 	public function getObjectUrl($path)
 	{
-		return $this->endpoint . '/' . $this->bucket . '/' . $path;
+		return Typecho_Common::url($path, empty($this->domain) ? ($this->endpoint . '/' . $this->bucket) : $this->domain);
 	}
 }
