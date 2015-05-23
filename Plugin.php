@@ -54,7 +54,7 @@ class BOSUpload_Plugin implements Typecho_Plugin_Interface
 		$sk = new Typecho_Widget_Helper_Form_Element_Text('sk', null, '', _t('Secure Key'), _t('<a href="http://console.bce.baidu.com/iam/#/iam/accesslist" target="_blank">获取Secure Key</a>'));
 		$form->addInput($sk);
 
-		$bucketName = new Typecho_Widget_Helper_Form_Element_Text('bucket', null, 'bucketName', _t('Bucket名称'), _t(''));
+		$bucketName = new Typecho_Widget_Helper_Form_Element_Text('bucket', null, '', _t('Bucket名称'), _t(''));
 		$form->addInput($bucketName);
 
 		$domain = new Typecho_Widget_Helper_Form_Element_Text('domain', null, '', _t('绑定域名'), _t(''));
