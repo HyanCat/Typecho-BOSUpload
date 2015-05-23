@@ -67,6 +67,6 @@ class BosService
 
 	public function getObjectUrl($path)
 	{
-		return Typecho_Common::url($path, empty($this->domain) ? ($this->endpoint . '/' . $this->bucket) : $this->domain);
+		return Typecho_Common::url($path, empty($this->domain) ? ($this->endpoint . '/' . $this->bucket) : ('http://' . $this->domain));
 	}
 }
